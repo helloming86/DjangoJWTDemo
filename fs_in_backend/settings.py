@@ -37,6 +37,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # 激活Users应用
+    'users.apps.UsersConfig',
+    # 激活djangorestframework
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -119,3 +123,22 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# 由于我们要允许用户上传图片，必须配置Django让其提供媒体文件服务
+# MEDIA_URL表示存放和提供用户上传文件的URL路径，
+# MEDIA_ROOT表示实际媒体文件的存放目录。这里都采用相对地址动态生成URL。
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+# DjangoRestFrameWork settings
+# djangorestframework-jwt settings
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly',
+    ],
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.BasicAuthentication',
+    )
+}
