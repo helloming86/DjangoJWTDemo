@@ -142,3 +142,10 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.BasicAuthentication',
     )
 }
+
+# 验证后端 1.默认验证后端 2.追加使用手机号验证
+# 顺序很重要。如果一个用户信息对于多个验证后端都有效，Django会停止在第一个成功验证的后端处。
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'users.authentication.MobileAuthBackend',
+]
