@@ -26,7 +26,7 @@ urlpatterns = [
     # 注册djangorestframework的路由
     # path(r'^api-auth', include('rest_framework.urls')),
     # restframework-jwt路由
-    url(r'^api-token-auth', obtain_jwt_token),
+    url(r'^api/api-token-auth', obtain_jwt_token),
 ]
 
 # Django开发服务器在DEBUG=True的情况下会提供媒体文件服务

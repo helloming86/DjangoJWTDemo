@@ -8,8 +8,9 @@ verify_ssl = true
 [packages]
 django = "*"
 pillow = "*"
-djangorestframework-jwt = "*"
 djangorestframework = "*"
+djangorestframework-jwt = "*"
+django-cors-headers = "*"
 
 [requires]
 python_version = "3.7"

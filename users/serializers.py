@@ -22,6 +22,7 @@ class UserSerializer(serializers.ModelSerializer):
     # 注意这里的变量名user_profile必须与Profile模型设置的related_name一致
     # 但是实现的效果跟想要的略有差别
     user_profile = ProfileSerializer(read_only=True)
+    token = serializers.CharField(label='token', read_only=True)
 
     class Meta:
         model = User
